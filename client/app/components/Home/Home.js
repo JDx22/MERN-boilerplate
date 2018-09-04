@@ -99,7 +99,7 @@ class Home extends Component {
 
   }
   onClickLogin = event => {
-    console.log('inside onClickLogin')
+  //  console.log('inside onClickLogin')
     const {
       loginEmail,
       loginPassword
