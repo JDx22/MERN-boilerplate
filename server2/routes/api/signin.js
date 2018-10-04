@@ -2,7 +2,7 @@ const User = require('../../models/User');
 const UserSession = require('../../models/UserSession')
 module.exports = (app) => {
     app.use(function(req, res, next) {
-        res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+        res.header("Access-Control-Allow-Origin", "http://localhost");
         res.header("Access-Control-Allow-Headers", "Content-Type");
         next();
       });
