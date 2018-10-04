@@ -1,7 +1,12 @@
 const User = require('../../models/User');
 const UserSession = require('../../models/UserSession')
 module.exports = (app) => {
-
+    app.use(function(req, res, next) {
+        res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+        res.header("Access-Control-Allow-Headers", "Content-Type");
+        next();
+      });
+      
     // Sign up
     app.post('/api/account/signup',(req, res, next) => {
         const { body } = req ;
@@ -23,18 +28,19 @@ module.exports = (app) => {
                 message: 'Error: last name cannot be blank'
             })
         }
-        if (!password) {
-            return res.send({
-                success: false,
-                message: 'Error: password cannot be blank'
-            })
-        }
         if (!email) {
             return res.send({
                 success: false,
                 message: 'Error: email cannot be blank'
             })
         }
+        if (!password) {
+            return res.send({
+                success: false,
+                message: 'Error: password cannot be blank'
+            })
+        }
+
         email = email.toLowerCase();
 
         // Steps:
